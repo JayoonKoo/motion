@@ -1,3 +1,10 @@
-div {
-  display: flex;
+body {
+  font-family: "PT Sans Narrow", sans-serif;
+}
+
+@media all and (min-width: 1024px) {
+}
+@media all and (min-width: 768px) and (max-width: 1023px) {
+}
+@media all and (max-width: 767px) {
 }

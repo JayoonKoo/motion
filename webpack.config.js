@@ -6,18 +6,19 @@ module.exports = (env, options) => {
   console.log(env, options)
   return {
     resolve: {
-      extensions: ['.js'],
+      extensions: ['.js', '.ts', '.scss', '.css'],
       alias: {
         '~': path.resolve(__dirname, 'src')
       }
     },
-    entry: './src/main.js',
+    entry: './src/index',
     output: {
       // path: '',
       // filename: '',
       publicPath: '/',
       clean: true
     },
+		devtool: 'inline-source-map',
     module: {
       rules: [
         {
@@ -33,7 +34,12 @@ module.exports = (env, options) => {
             'postcss-loader',
             'sass-loader'
           ]
-        }
+        },
+				{
+					test: /\.ts$/,
+					use: 'ts-loader',
+					exclude: /node_modules/
+				}
       ]
     },
     plugins: [
