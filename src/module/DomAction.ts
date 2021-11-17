@@ -26,6 +26,12 @@ class DomActionImpl implements DomAction {
     return liEl;
   }
 
+  private pushLi(el: HTMLLIElement, item: Element) {
+    el.appendChild(item);
+    this.motions.push(el);
+    this.addDom();
+  }
+
   addMotion = (
     e: any,
     type: MotionType,
@@ -33,26 +39,38 @@ class DomActionImpl implements DomAction {
     body: HTMLInputElement
   ) => {
     const liEl = this.getLi(title.value);
+    console.log(body.value);
+    console.log(type);
+
     switch (type) {
       case "image":
         const imgEl = document.createElement("img");
         imgEl.src = body.value;
-        liEl.appendChild(imgEl);
-        this.motions.push(liEl);
-        this.addDom();
+        imgEl.width = 300;
+        imgEl.height = 200;
+        this.pushLi(liEl, imgEl);
         break;
       case "video":
         const embedEl = document.createElement("embed");
         embedEl.src = body.value;
         embedEl.width = "300";
-        liEl.appendChild(embedEl);
-        this.motions.push(liEl);
-        this.addDom();
+        this.pushLi(liEl, embedEl);
         break;
-      // case "note":
-      // 	const imgEl = document.createElement("img")
-      // case "task":
-      // 	const imgEl = document.createElement("img")
+      case "note":
+        const pEl = document.createElement("p");
+        pEl.innerText = body.value;
+        this.pushLi(liEl, pEl);
+        break;
+      case "task":
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = `${new Date()}`;
+        const label = document.createElement("label");
+        label.innerText = body.value;
+        label.htmlFor = checkbox.id;
+        this.pushLi(liEl, checkbox);
+        this.pushLi(liEl, label);
+        break;
       default:
         this.addDom();
         return;

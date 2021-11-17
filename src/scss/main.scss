@@ -140,24 +140,33 @@ $primary: #43ac67;
 .document {
   ul {
     li {
+      padding: 0 300px;
       display: flex;
       width: 900px;
       height: 200px;
       margin: 0 auto;
-      justify-content: space-around;
       align-items: center;
       background-color: #141416;
       border-radius: 5px;
       box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.4);
       transition: background-color 0.2s linear, box-shadow 0.2s linear;
       cursor: pointer;
+      box-sizing: border-box;
       &:hover {
         background-color: #141416c0;
         box-shadow: 0 0 4px 5px rgba(0, 0, 0, 0.4);
       }
+      p {
+        color: $main-text;
+      }
       h3 {
         color: $main-text;
-        font-size: 18px;
+        font-size: 50px;
+        margin-right: 50%;
+      }
+      label {
+        font-size: 20px;
+        color: $main-text;
       }
     }
     li + li {
