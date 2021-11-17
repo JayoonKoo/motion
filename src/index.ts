@@ -3,20 +3,25 @@ import "./scss/main";
 import { HandleEvent } from "./interface/Interfaces";
 import HandleEventImpl from "./module/HandleEvent";
 import Callbacks from "./module/Callback";
+// https://picsum.photos/300/100
+const modalTitles = {
+  imageTitle: (<HTMLInputElement>(
+    document.querySelector(".modal-image__title")
+  ))!,
+  videoTitle: (<HTMLInputElement>(
+    document.querySelector(".modal-video__title")
+  ))!,
+  noteTitle: (<HTMLInputElement>document.querySelector(".modal-note__title"))!,
+  taskeTitle: (<HTMLInputElement>document.querySelector(".modal-task__title"))!,
+};
 
-interface MakeElement {}
-class MakeElementImpl implements MakeElement {}
-// AddDom
-interface AddDom {}
-class AddDomImpl implements AddDom {}
-
+const modalBodys = {
+  imageBody: (<HTMLInputElement>document.querySelector(".modal-image__body"))!,
+  videoBody: (<HTMLInputElement>document.querySelector(".modal-video__body"))!,
+  noteBody: (<HTMLInputElement>document.querySelector(".modal-note__body"))!,
+  taskeBody: (<HTMLInputElement>document.querySelector(".modal-task__body"))!,
+};
 // main
-const btn_class = [
-  ".header__btn-image",
-  ".header__btn-video",
-  ".header__btn-note",
-  ".header__btn-task",
-];
 
 const handler: HandleEvent = new HandleEventImpl();
 handler.addEvent(
@@ -45,4 +50,8 @@ handler.addEvent(
 handler.addEvent(
   { selector: ".close-btn", eventName: "click" },
   Callbacks.initModal
+);
+handler.addEvent(
+  { selector: ".modal-image__btn", eventName: "click" },
+  Callbacks.addMotion("image", modalTitles.imageTitle, modalBodys.imageBody)
 );

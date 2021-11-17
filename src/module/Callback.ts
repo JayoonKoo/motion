@@ -1,3 +1,7 @@
+import { DomAction } from "../interface/Interfaces";
+import { MotionType } from "../types/types";
+import DomActionImpl from "./DomAction";
+
 const imageModal = document.querySelector(".modal-image")!;
 const videoModal = document.querySelector(".modal-video")!;
 const noteModal = document.querySelector(".modal-note")!;
@@ -7,6 +11,8 @@ const imageBtn = document.querySelector(".header__btn-image");
 const videoBtn = document.querySelector(".header__btn-video");
 const noteBtn = document.querySelector(".header__btn-note");
 const taskBtn = document.querySelector(".header__btn-task");
+
+const domAction: DomAction = new DomActionImpl();
 
 class Callbacks {
   public static initModal(e?: any) {
@@ -44,6 +50,15 @@ class Callbacks {
     Callbacks.initModal();
     taskModal.classList.remove("displayNone");
     e.target.classList.add("active");
+  }
+  public static addMotion(
+    type: MotionType,
+    title: HTMLInputElement,
+    body: HTMLInputElement
+  ) {
+    return (e: any) => {
+      domAction.addMotion(e, type, title, body);
+    };
   }
 }
 

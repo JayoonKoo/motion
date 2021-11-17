@@ -16,3 +16,5 @@ type SuccessState = {
 };
 
 export type ResultState = EventAddErrorState | SuccessState;
+
+export type MotionType = "image" | "video" | "note" | "task";
