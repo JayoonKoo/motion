@@ -17,24 +17,38 @@ class DomActionImpl implements DomAction {
 
   // }
 
+  private getLi(title: string) {
+    const liEl = document.createElement("li");
+    const titleEl = document.createElement("h3");
+    titleEl.innerText = title;
+    liEl.appendChild(titleEl);
+
+    return liEl;
+  }
+
   addMotion = (
     e: any,
     type: MotionType,
     title: HTMLInputElement,
     body: HTMLInputElement
   ) => {
+    const liEl = this.getLi(title.value);
     switch (type) {
       case "image":
-        const liEl = document.createElement("li");
-        const titleEl = document.createElement("h3");
         const imgEl = document.createElement("img");
-        titleEl.innerText = title.value;
         imgEl.src = body.value;
-        liEl.appendChild(titleEl);
         liEl.appendChild(imgEl);
         this.motions.push(liEl);
-      // case "video":
-      // 	const embedEl = document.createElement("embed")
+        this.addDom();
+        break;
+      case "video":
+        const embedEl = document.createElement("embed");
+        embedEl.src = body.value;
+        embedEl.width = "300";
+        liEl.appendChild(embedEl);
+        this.motions.push(liEl);
+        this.addDom();
+        break;
       // case "note":
       // 	const imgEl = document.createElement("img")
       // case "task":

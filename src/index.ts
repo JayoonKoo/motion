@@ -55,3 +55,15 @@ handler.addEvent(
   { selector: ".modal-image__btn", eventName: "click" },
   Callbacks.addMotion("image", modalTitles.imageTitle, modalBodys.imageBody)
 );
+handler.addEvent(
+  { selector: ".modal-video__btn", eventName: "click" },
+  Callbacks.addMotion("video", modalTitles.videoTitle, modalBodys.videoBody)
+);
+// handler.addEvent(
+//   { selector: ".modal-image__btn", eventName: "click" },
+//   Callbacks.addMotion("image", modalTitles.imageTitle, modalBodys.imageBody)
+// );
+// handler.addEvent(
+//   { selector: ".modal-image__btn", eventName: "click" },
+//   Callbacks.addMotion("image", modalTitles.imageTitle, modalBodys.imageBody)
+// );
