@@ -10,30 +10,63 @@
 	<link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-	<!-- Header -->
-	<header class="header">
-		<h1 class="header__title">Motion</h1>
-		<div class="header__btns">
-			<button class="header__btn btn">Image</button>
-			<button class="header__btn btn">Video</button>
-			<button class="header__btn btn">Note</button>
-			<button class="header__btn btn">Task</button>
-		</div>
-	</header>
-
-	<!-- Document -->
-	<div class="document">
+	<div id="wrap">
+		<!-- Header -->
+		<header class="header">
+			<h1 class="header__title"><span>Mo</span>tion</h1>
+			<div class="header__btns">
+				<button class="header__btn-image btn">Image</button>
+				<button class="header__btn-video btn">Video</button>
+				<button class="header__btn-note btn">Note</button>
+				<button class="header__btn-task btn">Task</button>
+			</div>
+		</header>
+		<!-- Document -->
+		<section class="document">
 		
+		</section>
+		<!-- Footer -->
+		<footer class="footer"">
+			<span class="footer__auth">ⓒ Koo</span>
+			<span class="footer__year"></span>
+			<span class="footer__link">
+				page source
+				<a href="https://github.com/JayoonKoo/motion">here</a>
+			</span>
+		</footer>
+		<!-- modal -->
+		<div class="modal-image modal displayNone">
+			<div class="modal__inner">
+				<input class="modal-image__title modal-title" type="text" id="title" placeholder="Title.." />
+				<input class="modal-image__url modal-body" type="text" id="url" placeholder="URL.." />
+				<button class="modal-image__btn btn">Add</button>
+				<button class="close-btn btn">x</button>
+			</div>
+		</div>
+		<div class="modal-video modal displayNone">
+			<div class="modal__inner">
+				<input class="modal-video__title modal-title" type="text" id="title" placeholder="Title.." />
+				<input class="modal-video__url modal-body" type="text" id="url" placeholder="URL.." />
+				<button class="modal-video__btn btn">Add</button>
+				<button class="close-btn btn">x</button>
+			</div>
+		</div>
+		<div class="modal-note modal displayNone">
+			<div class="modal__inner">
+				<input class="modal-note__title modal-title" type="text" id="title" placeholder="Title.." />
+				<input class="modal-note__body modal-body" type="text" id="url" placeholder="URL.." />
+				<button class="modal-image__btn btn">Add</button>
+				<button class="close-btn btn">x</button>
+			</div>
+		</div>
+		<div class="modal-task modal displayNone">
+			<div class="modal__inner">
+				<input class="modal-task__title modal-title" type="text" id="title" placeholder="Title.." />
+				<input class="modal-task__body modal-body" type="text" id="url" placeholder="URL.." />
+				<button class="modal-image__btn btn">Add</button>
+				<button class="close-btn btn">x</button>
+			</div>
+		</div>
 	</div>
-
-	<!-- Footer -->
-	<footer class="footer"">
-		<span class="footer__auth">ⓒ Koo</span>
-		<span class="footer__year"></span>
-		<span class="footer__link">
-			page source
-			<a href="https://github.com/JayoonKoo/motion">here</a>
-		</span>
-	</footer>
 </body>
 </html>

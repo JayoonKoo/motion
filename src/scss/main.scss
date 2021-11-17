@@ -1,10 +1,157 @@
 body {
   font-family: "PT Sans Narrow", sans-serif;
+  background-color: #363442;
+}
+$main-background: #282933;
+$main-text: #f8fbfb;
+$primary: #43ac67;
+
+#wrap {
+  width: 1200px;
+  margin: 0 auto;
+  background-color: $main-background;
+  box-sizing: border-box;
+}
+.header {
+  min-height: 200px;
+  text-align: center;
+  box-sizing: border-box;
+  .header__title {
+    color: $primary;
+    padding-top: 60px;
+    font-size: 60px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    > span {
+      color: $main-text;
+    }
+  }
+  .header__btns {
+    margin-top: 20px;
+    .btn + .btn {
+      margin-left: 10px;
+    }
+    .btn {
+      background-color: $main-background;
+      // border: 1px solid $main-text;
+      transition: all 0.2s;
+      &.active {
+        border: none;
+        background-color: $primary;
+      }
+      &:hover {
+        border: none;
+        background-color: $primary;
+      }
+    }
+  }
+}
+.document {
+  border: 1px solid white;
+  box-sizing: border-box;
+  min-height: 800px;
+}
+.footer {
+  border: 1px solid white;
+  box-sizing: border-box;
+  min-height: 200px;
 }
 
-@media all and (min-width: 1024px) {
+// common
+.displayNone {
+  display: none;
 }
-@media all and (min-width: 768px) and (max-width: 1023px) {
+.btn {
+  border: none;
+  width: 80px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: $primary;
+  color: #f8fbfb;
+  transition: all 0.2s;
+  &:hover {
+    background-color: #1be762;
+  }
 }
-@media all and (max-width: 767px) {
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  .modal__inner {
+    background-color: #141416;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 80%;
+    height: 30%;
+    max-width: 500px;
+    max-height: 230px;
+    border-radius: 10px;
+    box-shadow: 0 0px 10px 5px rgba(0, 0, 0, 0.2);
+    .btn {
+      font-size: 18px;
+      display: block;
+      width: 84%;
+      margin: 0 auto;
+      height: 40px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    .modal-title,
+    .modal-body {
+      color: $main-text;
+      font-size: 18px;
+      display: block;
+      width: 80%;
+      margin: 0 auto;
+      height: 40px;
+      background-color: #1a1b21;
+      border: none;
+      margin-top: 40px;
+      padding: 0 10px;
+      border-radius: 10px;
+    }
+    .modal-body {
+      margin-top: 20px;
+    }
+    .close-btn {
+      position: absolute;
+      right: 10px;
+      top: -5px;
+      background-color: #dd693f;
+      width: 20px;
+      height: 20px;
+      border-radius: 7px;
+      font-size: 8px;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+}
+
+// media
+@media (max-width: 1240px) {
+  #wrap {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .header {
+    min-height: 100px;
+  }
+  .header__btns {
+    display: none;
+  }
+  .footer {
+    min-height: 100px;
+  }
+}
+@media (max-width: 560px) {
 }
