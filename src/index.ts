@@ -1,52 +1,57 @@
-// Error State
-type EventAddErrorState = {
-  result: "fail";
-  reason: "noSelector";
+import "./scss/reset";
+import "./scss/main";
+import { HandleEvent } from "./interface/Interfaces";
+import HandleEventImpl from "./module/HandleEvent";
+import Callbacks from "./module/Callback";
+// https://picsum.photos/300/100
+const modalTitles = {
+  imageTitle: (<HTMLInputElement>(
+    document.querySelector(".modal-image__title")
+  ))!,
+  videoTitle: (<HTMLInputElement>(
+    document.querySelector(".modal-video__title")
+  ))!,
+  noteTitle: (<HTMLInputElement>document.querySelector(".modal-note__title"))!,
+  taskeTitle: (<HTMLInputElement>document.querySelector(".modal-task__title"))!,
 };
 
-type SuccessState = {
-  result: "success";
+const modalBodys = {
+  imageBody: (<HTMLInputElement>document.querySelector(".modal-image__body"))!,
+  videoBody: (<HTMLInputElement>document.querySelector(".modal-video__body"))!,
+  noteBody: (<HTMLInputElement>document.querySelector(".modal-note__body"))!,
+  taskeBody: (<HTMLInputElement>document.querySelector(".modal-task__body"))!,
 };
+// main
 
-type ResultState = EventAddErrorState | SuccessState;
-
-// HandleEvent
-type EventType = {
-  selector: string;
-  eventName: keyof ElementEventMap;
-};
-
-type Cb = (this: Element, ev: Event) => void;
-
-interface HandleEvent {
-  addEvent(eventInfo: EventType, cb: Cb): ResultState;
-}
-
-class HandleEventImpl implements HandleEvent {
-  private events: EventType[] = [];
-
-  addEvent = (eventInfo: EventType, cb: Cb): ResultState => {
-    const { selector, eventName } = eventInfo;
-    const el = document.querySelector(selector);
-    if (el === null) {
-      return {
-        result: "fail",
-        reason: "noSelector",
-      };
-    }
-    el.addEventListener(eventName, cb);
-    this.events.push(eventInfo);
-    return {
-      result: "success",
-    };
-  };
-}
-
-// MakeElement
-interface MakeElement {}
-class MakeElementImpl implements MakeElement {}
-
-// AddDom
-interface AddDom {}
-
-class AddDomImpl implements AddDom {}
+const handler: HandleEvent = new HandleEventImpl();
+handler.addEvent(
+  { selector: ".header__btn-image", eventName: "click" },
+  Callbacks.handleImageClick
+);
+handler.addEvent(
+  { selector: ".header__btn-video", eventName: "click" },
+  Callbacks.handleVideoClick
+);
+handler.addEvent(
+  { selector: ".header__btn-note", eventName: "click" },
+  Callbacks.handleNoteClick
+);
+handler.addEvent(
+  { selector: ".header__btn-task", eventName: "click" },
+  Callbacks.handleTaskClick
+);
+handler.addEvent(
+  {
+    selector: ".modal",
+    eventName: "click",
+  },
+  Callbacks.initModal
+);
+handler.addEvent(
+  { selector: ".close-btn", eventName: "click" },
+  Callbacks.initModal
+);
+handler.addEvent(
+  { selector: ".modal-image__btn", eventName: "click" },
+  Callbacks.addMotion("image", modalTitles.imageTitle, modalBodys.imageBody)
+);
